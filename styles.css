@@ -62,3 +62,9 @@ footer {
   border-top: 1px solid #eee;
   color: #666;
 }
+
+.booking-widget {
+  width: 100%;
+  height: 800px;
+  margin-top: 30px;
+}
