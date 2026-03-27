@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home</title>
+<style>
+:root{
+  --font-color:#2a001c;
+  --hover-color:#6c0000;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:"Helvetica Neue", Arial, sans-serif;
+  color:var(--font-color);
+  background:white;
+  line-height:1.6;
+  padding-bottom:140px;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:flex-end;
+  padding:40px 80px;
+  background:transparent;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--font-color);
+  margin-left:40px;
+  font-size:14px;
+  letter-spacing:1px;
+  transition:color 0.35s ease;
+}
+
+nav a:hover{
+  color:var(--hover-color);
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:120px 10vw;
+  gap:80px;
+}
+
+.hero-text{
+  max-width:420px;
+}
+
+.hero-text h1{
+  font-size:48px;
+  font-weight:500;
+  margin-bottom:24px;
+}
+
+.hero-text p{
+  font-size:16px;
+  opacity:0.8;
+}
+
+.hero-image{
+  width:100%;
+}
+
+.hero-image img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+}
+
+footer{
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  padding:40px 10vw;
+  font-size:14px;
+  opacity:0.6;
+  background:white;
+  z-index:20;
+}
+
+@media (max-width:900px){
+
+.hero{
+  grid-template-columns:1fr;
+  padding-top:160px;
+}
+
+nav{
+  justify-content:center;
+}
+
+nav a{
+  margin:0 16px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="#">About</a>
+<a href="#">Treat</a>
+<a href="#">Learn</a>
+<a href="#">Book</a>
+</nav>
+
+<section class="hero">
+
+<div class="hero-text">
+<h1>Restorative Care</h1>
+<p>
+A quiet space for healing and balance. Gentle treatments designed to
+restore calm, presence, and well-being.
+</p>
+</div>
+
+<div class="hero-image">
+<img src="Jasmine24.jpg" alt="Treatment session" />
+</div>
+
+</section>
+
+<footer>
+<div class="footer-links">
+<div class="footer-dropdown connect-dropdown">
+<button class="dropbtn">Contact</button>
+<div class="dropup-content connect-menu">
+<a href="mailto:info@redplumhealth.com.au" class="connect-item">Email</a>
+<a href="https://www.instagram.com/j.ingchinesemedicine/" class="connect-item" target="_blank" rel="noopener">Instagram</a>
+</div>
+</div>
+<div class="footer-dropdown">
+<button class="dropbtn">Practice Locations</button>
+<div class="dropup-content">
+<a href="#">CBD</a>
+<a href="#">Eastern Suburbs</a>
+<a href="#">City South</a>
+</div>
+</div>
+<div class="footer-dropdown">
+<button class="dropbtn">FAQ</button>
+<div class="dropup-content faq-menu">
+<button class="faq-question" data-answer="Treatment plans are highly individualised and depend on the nature of your concern, how long it has been present, and your overall health. Most patients begin with regular weekly sessions until improvements become noticeable, followed by a few additional treatments to consolidate results. As the effects of acupuncture are cumulative, the interval between treatments is gradually extended until symptoms resolve or stabilise, after which occasional maintenance visits may be helpful.
+
+For example, recent-onset musculoskeletal pain may resolve within one or two sessions, whereas long‑standing or chronic conditions may benefit from weekly or fortnightly care until symptoms plateau, followed by maintenance treatment if flare‑ups occur.
+
+Alongside treatment, Chinese Medicine also emphasises supportive lifestyle practices such as diet, movement, and mental–emotional wellbeing. These are introduced gradually and tailored to what is sustainable and meaningful for each individual.">How many treatments will I need?</button>
+<button class="faq-question" data-answer="Most patients feel little to no discomfort, and experience deep relaxation as the body releases endogenous opioids (natural pain-killers). It is possible to feel subtle sensations like warmth, tingling, aching or heaviness at acupoints.">Does Acupuncture hurt?</button>
+<button class="faq-question" data-answer="'Dry Needling' is a bodywork technique, whereas 'Acupuncture' is a healthcare modality. In Australia, only a degree-qualified Chinese Medicine Practitioner can provide Acupuncture. Dry Needling is one of many needle techniques used by Acupuncturists and has also been embraced by Physio/Chiro/Massage/Sports Therapists for its efficacy in treating Trigger Points (aka muscle knots). To provide Dry Needling, a therapist with a previous qualification in bodywork must undertake a 20-80 hour certificate, while an Acupuncture degree in Australia ranges from 3-4 years of study.">How is Acupuncture different to Dry Needling?</button>
+<button class="faq-question" data-answer="If your policy includes acupuncture coverage, then yes! It's easy to claim using the invoice details provided at every treatment. Inquire with your health fund for the level of Chinese Medicine/Acupuncture you may be eligible for.">Can I claim with private health?</button>
+</div>
+</div>
+<span class="footer-copy">© 2026</span>
+</div>
+</footer>
+
+<div class="faq-modal" id="faqModal">
+<div class="faq-modal-content">
+<button class="faq-close" id="faqClose">×</button>
+<div id="faqText"></div>
+</div>
+</div>
+
+<script>
+const faqItems=document.querySelectorAll('.faq-question');
+const modal=document.getElementById('faqModal');
+const text=document.getElementById('faqText');
+const closeBtn=document.getElementById('faqClose');
+
+faqItems.forEach(item=>{
+  item.addEventListener('click',()=>{
+    text.textContent=item.dataset.answer;
+    modal.classList.add('open');
+  });
+});
+
+closeBtn.addEventListener('click',()=>{
+  modal.classList.remove('open');
+});
+
+modal.addEventListener('click',(e)=>{
+  if(e.target===modal){
+    modal.classList.remove('open');
+  }
+});
+</script>
+
+
+
+<style>
+.footer-links{
+  display:flex;
+  gap:40px;
+  align-items:center;
+}
+
+.footer-links a{
+  text-decoration:none;
+  color:var(--font-color);
+  transition:color 0.35s ease;
+}
+
+.footer-links a:hover{
+  color:var(--hover-color);
+}
+
+.footer-dropdown{
+  position:relative;
+}
+
+.dropbtn{
+  background:none;
+  border:none;
+  font:inherit;
+  color:var(--font-color);
+  cursor:pointer;
+}
+
+.dropbtn:hover{
+  color:var(--hover-color);
+}
+
+.dropup-content{
+  position:absolute;
+  bottom:100%;
+  right:0;
+  margin-bottom:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding-bottom:16px;
+
+  text-align:right;
+  opacity:0;
+  transform:translateY(8px);
+  pointer-events:none;
+  transition:opacity 0.25s ease, transform 0.25s ease;
+  transition-delay:0.18s;
+  white-space:nowrap;
+}
+
+.footer-dropdown:hover .dropup-content{
+  transition-delay:0s;
+}
+
+.footer-dropdown:hover .dropup-content,
+.dropup-content:hover{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+.faq-question{
+  background:none;
+  border:none;
+  color:var(--font-color);
+  font-size:13px;
+  text-align:right;
+  cursor:pointer;
+}
+
+.faq-question:hover{
+  color:var(--hover-color);
+}
+
+.dropup-content a{
+  text-decoration:none;
+  color:var(--font-color);
+  font-size:13px;
+}
+
+.connect-menu{
+  right:0;
+  left:auto;
+  text-align:right;
+}
+
+.connect-item{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+
+
+
+
+.dropup-content a:hover{
+  color:var(--hover-color);
+}
+
+
+
+.faq-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.25s ease;
+}
+
+.faq-modal.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.faq-modal-content{
+  background:white;
+  padding:40px;
+  max-width:420px;
+  font-size:14px;
+  line-height:1.6;
+  color:var(--font-color);
+  position:relative;
+}
+
+.faq-close{
+  position:absolute;
+  top:10px;
+  right:14px;
+  border:none;
+  background:none;
+  font-size:22px;
+  cursor:pointer;
+  color:var(--font-color);
+}
+
+.footer-copy{
+  opacity:0.5;
+  margin-left:auto;
+}
+</style>
+
+</body>
+</html>
